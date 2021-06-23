@@ -1,0 +1,92 @@
+.dropzone-ui {
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  &.disabled {
+    background: #e8ecef;
+    cursor: no-drop;
+  }
+  .dropzone-input-ui {
+    text-align: center;
+    .border-dash {
+      border: 1px dashed #ccc;
+      background: #fafafa;
+      padding: 50px;
+      &:hover {
+        background: #f5efef;
+        cursor: pointer;
+      }
+    }
+    .dropzone-holder-image {
+      position: relative;
+      @media screen and (max-width: 480px) {
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+      }
+      .dropzone-holder-label {
+        position: absolute;
+        padding: 40px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        visibility: hidden;
+        p {
+          color: #fff;
+        }
+      }
+      &:hover {
+        .dropzone-holder-label {
+          background: rgba(0, 0, 0, 0.41);
+          visibility: unset;
+        }
+      }
+    }
+  }
+  .dropzone-list-thumbnail {
+    // padding: 0px 40px 0px 40px;
+    .close-icon {
+      background: rgba(0, 0, 0, 0.31);
+      position: absolute;
+      right: 0;
+      text-align: center;
+      height: 22px;
+      width: 22px;
+      border-radius: 100px;
+      cursor: pointer !important;
+      i {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.img-holder {
+  height: 180px;
+  .aspect-ratio-1-1 {
+    width: 100%;
+    padding-top: 50%;
+    // position: relative;
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  img {
+    position: absolute;
+    margin: auto;
+    max-height: 150px;
+    width: -webkit-fill-available;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

@@ -1,0 +1,79 @@
+.detail-data-jomblo {
+  font-family: sans-serif;
+  .detail-list {
+    padding-bottom: 15px;
+    &.user-detail {
+      p {
+        width: 100px;
+      }
+      .detail-value {
+        background-color: #f1f3f6;
+        padding: 10px;
+        width: 200px;
+        border-radius: 3px;
+      }
+    }
+    .detail-key {
+      font-weight: bold;
+      font-size: 11px;
+    }
+    .detail-value {
+      color: #5c5c5c;
+      font-size: 14px;
+    }
+  }
+  .bintang-review-user {
+    h1 {
+      text-align: center;
+      font-size: 60px;
+      color: #ffaf00;
+    }
+    h2 {
+      padding-top: 5px;
+      text-align: center;
+      font-size: 13px;
+      color: black;
+    }
+  }
+  .ulasan-title-review-user {
+    font-size: 11px;
+  }
+  .ulasan-review-user {
+    .batasan {
+      width: 100%;
+      margin: auto;
+      border-top: 1px solid #5c5c5c;
+    }
+    .date-ulasan {
+      font-size: 11px;
+    }
+    .user-review {
+      font-size: 15px;
+    }
+  }
+  .scroolable-ulasan {
+    padding-right: 10px;
+    height: 1085px;
+    overflow-y: scroll;
+  }
+  #scrool-style::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+  }
+
+  #scrool-style::-webkit-scrollbar {
+    width: 3px;
+    background-color: #f5f5f5;
+  }
+
+  #scrool-style::-webkit-scrollbar-thumb {
+    background-color: #5c5c5c;
+  }
+}
+
+.tab-detail-data-jomblo {
+  margin: auto;
+}
+.bad-star {
+  filter: grayscale(100%);
+}

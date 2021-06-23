@@ -1,0 +1,8 @@
+node_modules
+stats.json
+Dockerfile
+
+.env
+backup
+
+/dist

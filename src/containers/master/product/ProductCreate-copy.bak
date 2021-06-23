@@ -1,0 +1,236 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable class-methods-use-this */
+import React from 'react';
+import { Field, reduxForm, FieldArray } from 'redux-form';
+import { connect } from 'react-redux';
+import { renderField, textAreaField } from '@components/Field';
+import ButtonLoader from '@components/ButtonLoader';
+import { createData as createProduct } from '@actions/product.action';
+import { createData as createSecondary } from '@actions/secondary.action';
+import ButtonBack from '@components/button/ButtonBack';
+import FieldDropzoneUploadMulti from '@components/dropzone/FieldDropzoneUploadMulti';
+import ButtonCancel from '@components/button/ButtonCancel';
+import SelectAttribute from '@components/select/SelectAttribute';
+import SelectCategory from '@components/select/SelectCategory';
+import isEmpty from 'lodash/isEmpty';
+import RenderSecondaryProduct from './components/RenderSecondaryProduct';
+
+class ProductCreate extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      picture: []
+    };
+  }
+
+  onSubmit = value => {
+    const obj = {};
+    const { createProduct } = this.props;
+    const { picture } = this.state;
+
+    obj.name = value.name;
+    obj.description = value.description;
+    obj.code = value.code;
+    obj.status = true;
+    obj.category = [{ category_id: value.category_id.value }];
+
+    obj.attribute = [];
+    if (value.attribute_id.length) {
+      value.attribute_id.map(item => {
+        obj.attribute.push({ attribute_id: item });
+      });
+    }
+
+    obj.picture = [];
+    if (picture.length) {
+      picture.map(item => {
+        obj.picture.push({ picture_id: item });
+      });
+    }
+
+    createProduct(obj);
+  };
+
+  onSecondarySubmit = value => {
+    const obj = {};
+    const { createSecondary, current, form } = this.props;
+    const { product } = value;
+
+    // console.log('form', form.modalUploadForm.values);
+
+    // console.log('product', product);
+    if (!isEmpty(current)) {
+      const dataSecondary = product.map(val => {
+        // SKU
+        obj.code = val.code;
+        // Unit
+        obj.unit = val.unit;
+        // List attributes
+        if (form.modalUploadForm) {
+          obj.attribute = form.modalUploadForm.values;
+        }
+        // Quantity
+        obj.quantity = val.quantity;
+        // Price
+        obj.price = val.price;
+        // Picture
+        obj.price_id = '';
+        // File pdf2d
+        obj.pdf1 = '';
+        // File pdf3d
+        obj.pdf2 = '';
+
+        obj.name = current.name;
+        obj.product_id = current.id;
+        obj.status = true;
+        return obj;
+      });
+      console.log('data', dataSecondary);
+      createSecondary(obj);
+    }
+  };
+
+  handleFileDrop = picture => {
+    this.setState({ picture });
+  };
+
+  mapOptions = () => {
+    const { current } = this.props;
+    const newOptions = current.attribute.map(i => ({
+      id: i.id,
+      name: i.name,
+      type: i.type
+    }));
+
+    return newOptions;
+  };
+
+  render() {
+    const { handleSubmit, current } = this.props;
+
+    let options = [];
+    if (!isEmpty(current)) {
+      if (current.attribute.length) {
+        options = this.mapOptions();
+      }
+    }
+    // console.log('current', options);
+    return (
+      <div className="content-wrapper">
+        <div className="row pt-5">
+          <div className="col-md-12 grid-margin">
+            <div className="row mb-3 pl-3">
+              <div className="col-md-5">
+                <ButtonBack>CREATE NEW MASTER PRODUCT</ButtonBack>
+              </div>
+            </div>
+            <form
+              className="forms-sample pl-5 pt-3"
+              onSubmit={handleSubmit(this.onSubmit)}
+            >
+              <div className="row">
+                <div className="col-md-4">
+                  <Field
+                    name="name"
+                    type="text"
+                    component={renderField}
+                    label="Product Name"
+                    id="inputProductName"
+                    placeholder="Input product name"
+                    // validate={[required]}
+                  />
+                  <SelectCategory />
+                </div>
+                <div className="col-md-4">
+                  <Field
+                    name="code"
+                    type="text"
+                    component={renderField}
+                    label="Product Code"
+                    id="inputProductCode"
+                    placeholder="Input product code"
+                    // validate={[required]}
+                  />
+                  <Field
+                    name="description"
+                    type="text"
+                    component={textAreaField}
+                    label="Description"
+                    id="inputDescription"
+                    placeholder="Input description"
+                    // validate={[required]}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <SelectAttribute />
+
+                  <div className="row">
+                    <div className="col-md-12">
+                      <FieldDropzoneUploadMulti
+                        handleFileDrop={this.handleFileDrop}
+                        typePicture="product"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-3 pl-5">
+                  <ButtonLoader
+                    type="submit"
+                    className="btn btn-green-dark text-white mt-3"
+                    // loader={data.isLoading}
+                  >
+                    Save
+                  </ButtonLoader>
+                </div>
+              </div>
+            </form>
+
+            {/* <div
+              className={`container ${
+                isEmpty(current) ? 'disabled-element' : ''
+              } my-3 pb-3 rounded`}
+            >
+              <div className="row mb-3 pt-3">
+                <div className="col-md-5">
+                  <h5 className="font-weight-bold">CREATE SECONDARY PRODUCT</h5>
+                </div>
+              </div>
+              <form onSubmit={handleSubmit(this.onSecondarySubmit)}>
+                <FieldArray
+                  name="product"
+                  component={RenderSecondaryProduct}
+                  data={options}
+                />
+
+                <div className="row pt-5 mb-0">
+                  <div className="col-md-1">
+                    <ButtonCancel className="btn btn-green-outline text-white">
+                      Cancel
+                    </ButtonCancel>
+                  </div>
+                  <div className="col-md-3 pl-5">
+                    <ButtonLoader
+                      type="submit"
+                      className="btn btn-green-dark text-white mt-3"
+                    >
+                      + Create New Product
+                    </ButtonLoader>
+                  </div>
+                </div>
+              </form>
+            </div> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  current: state.product.current,
+  form: state.form
+});
+
+export default reduxForm({
+  form: 'createProductForm'
+})(connect(mapStateToProps, { createProduct, createSecondary })(ProductCreate));

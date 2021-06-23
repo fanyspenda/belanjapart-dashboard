@@ -1,0 +1,72 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier", "react", "jsx-a11y"],
+  "globals": {
+    "localStorage": true,
+    "window": true,
+    "moment": true,
+    "FormData": true,
+    "document": true,
+    "location": true,
+    "$": true
+  },
+  "env": { "es6": true },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "semi": 0,
+    "linebreak-style": 0,
+    "no-shadow": "off",
+    "no-script-url": 0,
+    "allowAfterThis": true,
+    "no-unused-vars": [
+      "error",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ],
+    "no-undef": ["error"],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "no-use-before-define": ["error", { "functions": false }],
+    "func-names": ["error", "never"],
+    "import/prefer-default-export": 0,
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ],
+    "react/jsx-no-target-blank": [0, { "enforceDynamicLinks": "always" }],
+    "react/destructuring-assignment": [0, "never"],
+    "react/no-unused-prop-types": [
+      "error",
+      {
+        "customValidators": [],
+        "skipShapeProps": true
+      }
+    ],
+    "react/prop-types": [0],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/button-has-type": [0]
+  },
+  "settings": {
+    "import/resolver": "webpack"
+  }
+}

@@ -1,0 +1,15 @@
+.ant-calendar-range-picker-input {
+  width: 130px;
+}
+
+.ant-calendar-picker-input.ant-input {
+  height: 38px;
+}
+
+.ant-select-selection {
+  height: 38px;
+}
+
+.ant-message {
+  z-index: 2042;
+}

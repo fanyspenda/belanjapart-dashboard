@@ -1,0 +1,25 @@
+//Modal Value
+.modal-head-product {
+  border: none;
+  p {
+    font-size: 14px;
+    color: #1d1d1d;
+    text-align: center;
+    letter-spacing: 0.37px;
+    color: #1d1d1d;
+    line-height: 1.25;
+  }
+}
+
+.modal-body-product {
+  input {
+    height: 40px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    color: #1d1d1d;
+    font-weight: 600;
+    border-radius: 5px;
+    border-right: 0px;
+    border-left: 0px;
+  }
+}

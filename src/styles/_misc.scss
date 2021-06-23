@@ -1,0 +1,141 @@
+/* Miscellanoeous */
+
+body,
+html {
+  overflow-x: hidden;
+  padding-right: 0 !important; // resets padding right added by Bootstrap modal
+  font-family: 'Muli', sans-serif;
+}
+
+.fa-bell,
+.fa-eye,
+.fa-envelope,
+.fa-lock {
+  color: #00573d !important;
+}
+
+*:-moz-full-screen,
+*:-webkit-full-screen,
+*:fullscreen *:-ms-fullscreen {
+  overflow: auto !important;
+}
+
+.page-body-wrapper {
+  min-height: calc(100vh - #{$navbar-height});
+  @include display-flex();
+  @include flex-direction(row);
+  padding-left: 0;
+  padding-right: 0;
+  &:not(.auth-page) {
+    padding-top: $navbar-height;
+  }
+  &.full-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+.main-panel {
+  transition: width $action-transition-duration
+      $action-transition-timing-function,
+    margin $action-transition-duration $action-transition-timing-function;
+  width: calc(100% - #{$sidebar-width-lg});
+  min-height: calc(100vh - #{$navbar-height});
+  @include display-flex();
+  @include flex-direction(column);
+  @media (max-width: 991px) {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.content-wrapper {
+  // background: $content-bg;
+  // background: #f1f3f6;
+  padding: 1.5rem 1.7rem;
+  width: 100%;
+  @include flex-grow(1);
+
+  h4 {
+    font-size: 20px;
+    .fa-arrow-left {
+      color: black;
+    }
+  }
+
+  .my-search {
+    border-radius: 5px;
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+  }
+
+  .drop-page {
+    span {
+      font-size: 12px;
+      color: #6b6b6b;
+    }
+    select {
+      border-radius: 5px !important;
+      border: solid 1px #cccccc !important;
+    }
+  }
+
+  .forms-sample {
+    label {
+      color: #1d1d1d;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .detail-value {
+      color: #1d1d1d;
+      font-size: 14px;
+    }
+    .form-control {
+      border-radius: 5px;
+      border: solid 1px #cccccc;
+      background-color: #ffffff;
+    }
+  }
+
+  .float-right {
+    ul {
+      border-radius: 5px;
+      border: solid 1px #cccccc;
+      background-color: #ffffff;
+      li {
+        a {
+          color: #7d7d7d;
+          &:active {
+            background-color: #00573d;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.container-scroller {
+  overflow: hidden;
+  background-color: #fafcfb;
+}
+
+.scroll-container {
+  position: relative;
+  &.horizontally {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  &.vertically {
+    overflow-y: hidden;
+    height: 100%;
+    max-height: 100%;
+  }
+}
+
+pre {
+  background: color(gray-lighter);
+  padding: 15px;
+  font-size: 14px;
+}

@@ -1,0 +1,25 @@
+.react-h5-audio-player {
+  .toggle-play-wrapper {
+    .toggle-play-button {
+      // Remember to use !important to overwrite inline styles.
+      background-color: #00d0e4 !important;
+      .pause-icon {
+        box-shadow: #00d0e4 7px 0px 0px 0px inset !important;
+      }
+    }
+  }
+}
+
+.img-sticker{
+  height: 100px;
+  width: auto;
+}
+
+.img-Editsticker{
+  height: 70px;
+  width: auto;
+}
+
+.text-skip{
+  font-size: 20px;
+}
