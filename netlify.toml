@@ -1,0 +1,17 @@
+NODE_ENV=development
+URL_API= https://apidev-mcmaster.twisdev.com/v1/api-admin
+VAPID_KEY= BHXIACvjcKvi5ic2I3XKV1DlA5v3wzWpUmd68iMEHdooCXmJKGT-XzbVQn5-cRmzFBuxBNtdYji7X9f8f73vLIo
+URL_FILE= https://apidev-mcmaster.twisdev.com/mcmaster-file
+URL_WEB_FRONT= https://apidev-mcmaster.twisdev.com/v1/api
+URL_COMMON=https://apidev-mcmaster.twisdev.com/
+URL_SOCKET=wss://apidev-mcmaster.twisdev.com/v1/api-admin/ws
+URL_ADMIN=https://mcmaster-dashboard.twisdev.com
+
+FIREBASE_API_KEY= AIzaSyDsqzRnRIMiQCxxBuTAnluwOcf--TLkWpA
+FIREBASE_AUTH_DOMAIN= belanjaparts.firebaseapp.com
+FIREBASE_DATABASE_URL= https://belanjaparts.firebaseio.com
+FIREBASE_PROJECT_ID= belanjaparts
+FIREBASE_STORAGE_BUCKET= belanjaparts.appspot.com
+FIREBASE_SENDER_ID= 1089497698004
+FIREBASE_APP_ID= 1:1089497698004:web:05bf6d0718081b7053b541
+FIREBASE_MEASUREMENT_ID= G-5ZN5LKHJQ6
